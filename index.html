@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mast Animation</title>
+    <style>
+        /* CSS YAHI PAR HAI */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000; /* Dark background */
+            overflow: hidden;
+        }
+
+        .container {
+            width: 200px;
+            height: 200px;
+            perspective: 500px;
+        }
+
+        .sphere {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: rotate 10s linear infinite;
+        }
+
+        .sphere div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #00f2fe;
+            border-radius: 50%;
+            background: rgba(0, 242, 254, 0.1);
+            box-shadow: 0 0 15px #00f2fe, inset 0 0 15px #00f2fe;
+        }
+
+        /* Alag-alag angles par rings */
+        .sphere div:nth-child(1) { transform: rotateY(0deg); }
+        .sphere div:nth-child(2) { transform: rotateY(45deg); }
+        .sphere div:nth-child(3) { transform: rotateY(90deg); }
+        .sphere div:nth-child(4) { transform: rotateY(135deg); }
+        .sphere div:nth-child(5) { transform: rotateX(45deg); }
+        .sphere div:nth-child(6) { transform: rotateX(90deg); }
+
+        /* Ghoomne wala animation */
+        @keyframes rotate {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+            }
+        }
+
+        /* Background glow effect */
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(30px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow"></div>
+    
+    <div class="container">
+        <div class="sphere">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+</body>
+</html>
